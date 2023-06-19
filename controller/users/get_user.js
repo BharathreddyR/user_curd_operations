@@ -10,11 +10,11 @@ router.get('/users/:id', async (req, res) => {
     try {
       const user = await Inter.findById(req.params.id);
       if (!user) {
-        return res.status(404).send();
+        return res.status(404).send('yuiol');
       }
       res.send(user);
     } catch (err) {
-      res.status(500).send(err);
+      res.status(500).send(err.message);
     }
 });
 

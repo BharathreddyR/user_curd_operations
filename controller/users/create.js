@@ -7,12 +7,20 @@ const Inter =require('../../model/inter')
 
 
 router.post('/createUser',async(req,res)=>{
-    const inters = new Inter({
-        name:req.body.name,
-        email:req.body.email,
-        mobilenumber:req.body.number   
-    })
+    // const inters = new Inter({
+    //     name:req.body.name,
+    //     email:req.body.email,
+    //     mobilenumber:req.body.number   
+    // })
     try{
+        const requestBody =req.body
+        const { name,email,mobilenumber } = requestBody
+        let inters = {
+            name,
+            email,
+            mobilenumber
+        }
+        
         const a1 =await Inter.create(inters)
         res.send(a1)
     }catch(err){
